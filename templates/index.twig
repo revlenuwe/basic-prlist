@@ -7,45 +7,22 @@
         <div class="col-lg-12">
             <h3 class="pb-4">Product list</h3>
         </div>
+
+        {% for product in products %}
         <div class="col-lg-3 pb-2">
             <div class="card">
-                <img src="https://robohash.org/4ws.png" class="card-img-top" alt="4ws">
+                {% if product.image|default %}
+                    <img src="{{ product.image }}" class="card-img-top" alt="4ws">
+                {% else %}
+                    <img src="/public/images/placeholder.png" class="card-img-top" alt="placeholder">
+                {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">Product #</h5>
-                    <p class="card-text">Description</p>
-                    <a href="" class="btn btn-success">Go to</a>
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <a href="/product/{{ product.id }}" class="btn btn-success mt-2 w-100">Go to</a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 pb-2">
-            <div class="card">
-                <img src="https://robohash.org/4ws.png" class="card-img-top" alt="4ws">
-                <div class="card-body">
-                    <h5 class="card-title">Product #</h5>
-                    <p class="card-text">Description</p>
-                    <a href="" class="btn btn-success">Go to</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 pb-2">
-            <div class="card">
-                <img src="https://robohash.org/4ws.png" class="card-img-top" alt="4ws">
-                <div class="card-body">
-                    <h5 class="card-title">Product #</h5>
-                    <p class="card-text">Description</p>
-                    <a href="" class="btn btn-success">Go to</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 pb-2">
-            <div class="card">
-                <img src="https://robohash.org/4ws.png" class="card-img-top" alt="4ws">
-                <div class="card-body">
-                    <h5 class="card-title">Product #</h5>
-                    <p class="card-text">Description</p>
-                    <a href="" class="btn btn-success">Go to</a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+
     </div>
 {% endblock %}
