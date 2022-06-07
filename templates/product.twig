@@ -4,6 +4,27 @@
 
 {% block content %}
     <div class="row">
-        {{ productId }}
+        <div class="col-lg-5">
+            <div class="product-image border rounded text-center p-3">
+                {% if product.image|default %}
+                    <img src="{{ product.image }}" class="card-img-top" alt="4ws">
+                {% else %}
+                    <img src="/public/images/placeholder.png" class="card-img-top" alt="placeholder">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="card-body pt-2">
+                <div class="d-flex justify-content-between pb-3">
+                    <h3 class="card-title">{{ product.name }}</h3>
+                    <a href="/product/{{ product.id }}/edit" class="btn btn-success">Edit</a>
+                </div>
+
+                <b>{{ product.price }}Kč</b>
+                <p class="card-text pt-3">{{ product.description }}</p>
+                <hr>
+                . . .
+            </div>
+        </div>
     </div>
 {% endblock %}
