@@ -14,7 +14,9 @@ $request = ServerRequestFactory::fromGlobals(
 
 $router = new Router();
 
+$router->map('GET', '/product/{id:number}', [new ProductsController(), 'product']);
 $router->map('GET', '/', [new ProductsController(), 'index']);
+
 
 
 $response = $router->dispatch($request);

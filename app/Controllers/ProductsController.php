@@ -13,4 +13,11 @@ class ProductsController extends BaseController
             'test' => 'Cs'
         ]);
     }
+
+    public function product(ServerRequestInterface $request, array $args)
+    {
+        return $this->renderView('product.twig', [
+            'productId' => $args['id']
+        ]);
+    }
 }
