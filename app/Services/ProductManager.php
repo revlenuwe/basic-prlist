@@ -12,4 +12,9 @@ class ProductManager
     {
         return Product::orderBy($field, $orderBy)->get();
     }
+
+    public function getById(int $id)
+    {
+        return Product::find($id);
+    }
 }
