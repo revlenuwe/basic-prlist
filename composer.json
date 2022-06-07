@@ -2,7 +2,8 @@
     "require": {
         "league/route": "^5.1",
         "laminas/laminas-diactoros": "^2.11",
-        "laminas/laminas-httphandlerrunner": "^2.1"
+        "laminas/laminas-httphandlerrunner": "^2.1",
+        "twig/twig": "^3.4"
     },
     "autoload": {
         "psr-4": {
