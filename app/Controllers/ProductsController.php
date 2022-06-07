@@ -5,7 +5,6 @@ namespace App\Controllers;
 
 use App\Models\Product;
 use App\Services\ProductManager;
-use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\Message\ServerRequestInterface;
 
 class ProductsController extends BaseController
@@ -33,11 +32,24 @@ class ProductsController extends BaseController
         $product = $this->productManager->getById($args['id']);
 
         if(!$product) {
-            return new RedirectResponse('/');
+            return $this->redirect('/');
         }
 
         return $this->renderView('product.twig', [
             'product' => $product
+        ]);
+    }
+
+    public function edit(ServerRequestInterface $request, array $args)
+    {
+        $product = $this->productManager->getById($args['id']);
+
+        if(!$product) {
+            return $this->redirect('/');
+        }
+
+        return $this->renderView('edit.twig', [
+
         ]);
     }
 }
