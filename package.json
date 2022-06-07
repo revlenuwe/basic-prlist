@@ -1,0 +1,35 @@
+{
+  "name": "basic-prlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development",
+    "dev": "webpack --mode development --hot --progress --color"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revlenuwe/basic-prlist.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/revlenuwe/basic-prlist/issues"
+  },
+  "homepage": "https://github.com/revlenuwe/basic-prlist#readme",
+  "dependencies": {
+    "@babel/core": "^7.18.2",
+    "axios": "^0.27.2",
+    "babel-loader": "^8.2.5",
+    "core-js": "^3.22.8",
+    "vue": "^3.2.37",
+    "vue-loader": "^17.0.0",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.73.0",
+    "webpack-dev-server": "^4.9.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.2"
+  }
+}
