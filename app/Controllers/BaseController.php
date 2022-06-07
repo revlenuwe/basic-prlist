@@ -7,6 +7,7 @@ namespace App\Controllers;
 use Laminas\Diactoros\Response;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use Laminas\Diactoros\Response\RedirectResponse;
 
 abstract class BaseController
 {
@@ -39,6 +40,10 @@ abstract class BaseController
         );
 
         return $response;
+    }
+
+    public function redirect(string $url, int $status = 302) {
+        return new RedirectResponse($url, $status);
     }
 
 }
