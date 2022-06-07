@@ -18,10 +18,15 @@ abstract class BaseController
 
     private function bootTwig()
     {
-        $loader = new FilesystemLoader(__DIR__ . '/../../templates');
+        $loader = new FilesystemLoader($this->basePath('templates'));
         $this->twig = new Environment($loader, [
             'cache' => false
         ]);
+    }
+
+    protected function basePath(string $path)
+    {
+        return __DIR__ . '/../..//' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
 
 }
