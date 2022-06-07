@@ -4,6 +4,7 @@
 namespace App\Controllers;
 
 
+use Laminas\Diactoros\Response;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -27,6 +28,17 @@ abstract class BaseController
     protected function basePath(string $path)
     {
         return __DIR__ . '/../..//' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+    }
+
+    public function renderView(string $view, array $data)
+    {
+        $response = new Response();
+
+        $response->getBody()->write(
+            $this->twig->render($view, $data)
+        );
+
+        return $response;
     }
 
 }
