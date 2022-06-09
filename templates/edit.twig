@@ -5,7 +5,13 @@
 {% block content %}
     <div class="row">
         <div class="col-lg-6 mx-auto">
-            <product-edit-form id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" description="{{ product.description }}" />
+            <product-edit-form
+                    id="{{ product.id }}"
+                    name="{{ product.name }}"
+                    price="{{ product.price }}"
+                    image="{{ product.image }}"
+                    description="{{ product.description }}"
+            />
         </div>
     </div>
 {% endblock %}

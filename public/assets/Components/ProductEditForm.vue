@@ -16,6 +16,11 @@
           <div class="pt-1 text-danger" v-if="v$.price.$error">Field price is required</div>
         </div>
         <div class="form-group">
+          <label for="image">Image (only relative link)</label>
+          <input type="text" class="form-control" id="image" v-model="image" placeholder="/public/images/products/example.png">
+          <div class="pt-1 text-danger" v-if="v$.price.$error">Field price is required</div>
+        </div>
+        <div class="form-group">
           <label for="description">Description</label>
           <textarea name="description" class="form-control" id="description" cols="30" rows="10" v-model="description"></textarea>
           <div class="pt-1 text-danger" v-if="v$.description.$error.required">Field description is required</div>
@@ -53,6 +58,10 @@ export default {
       type: String,
       required: true
     },
+    image: {
+      type: String,
+      required: true
+    },
     description: {
       type: String,
       required: true
@@ -69,7 +78,7 @@ export default {
 
       if(isValid) {
         axios.post('/api/product/' + this.id + '/edit', {
-            name: this.name, price: this.price, description: this.description
+            name: this.name, price: this.price, image: this.image, description: this.description
         }, {headers: {'Content-Type': 'multipart/form-data'}}
         ).then(response => {
             this.$toast.success(response.data.message, {position: 'top-right'})
