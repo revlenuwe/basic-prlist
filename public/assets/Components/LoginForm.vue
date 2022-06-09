@@ -51,8 +51,11 @@ export default {
 
       if(isValid) {
         axios.post('/api/auth/login', this.$data, {headers: {'Content-Type': 'multipart/form-data'}}).then(response => {
-          this.$toast.success('Login succeeded.Redirecting...', {position: 'top-right'})
-          setTimeout(() => {location.href = '/'}, 3000)
+
+          if(response.data.authenticated) {
+            this.$toast.success('Login succeeded.Redirecting...', {position: 'top-right'})
+            setTimeout(() => {location.href = '/'}, 3000)
+          }
         }).catch(errors => {
           this.errors = errors.response.data
         })
