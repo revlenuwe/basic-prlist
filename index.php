@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+use App\Controllers\LoginController;
 use App\Controllers\ProductsController;
 use App\Controllers\RegisterController;
 use App\Middlewares\AuthMiddleware;
@@ -42,8 +43,10 @@ $router = new Router();
 
 $router->map('POST', '/api/product/{id:number}/edit', [new \App\Controllers\Api\ProductsController(), 'edit']);
 $router->map('POST', '/api/auth/register', new \App\Controllers\Api\Auth\RegisterController());
+$router->map('POST', '/api/auth/login', new \App\Controllers\Api\Auth\LoginController());
 
 $router->map('GET', '/auth/register', [new RegisterController(), 'index']);
+$router->map('GET', '/auth/login', [new LoginController(), 'index']);
 
 $router->map('GET', '/product/{id:number}/edit', [new ProductsController(), 'edit']);
 $router->map('GET', '/product/{id:number}', [new ProductsController(), 'product']);
