@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\ProductsController;
+use App\Controllers\RegisterController;
 use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Events\Dispatcher;
@@ -38,6 +39,8 @@ $request = ServerRequestFactory::fromGlobals(
 $router = new Router();
 
 $router->map('POST', '/api/product/{id:number}/edit', [new \App\Controllers\Api\ProductsController(), 'edit']);
+
+$router->map('GET', '/auth/register', [new RegisterController(), 'index']);
 
 $router->map('GET', '/product/{id:number}/edit', [new ProductsController(), 'edit']);
 $router->map('GET', '/product/{id:number}', [new ProductsController(), 'product']);
