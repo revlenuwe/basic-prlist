@@ -4,6 +4,7 @@ import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import RegisterForm from "./Components/RegisterForm";
 import LoginForm from "./Components/LoginForm";
+import ProductAddForm from "./Components/ProductAddForm";
 
 const app = createApp({
     /* Twig conflict
@@ -19,6 +20,7 @@ const app = createApp({
 app.use(VueToast)
 
 app.component('product-edit-form', ProductEditForm)
+app.component('product-add-form', ProductAddForm)
 app.component('register-form', RegisterForm)
 app.component('login-form', LoginForm)
 
