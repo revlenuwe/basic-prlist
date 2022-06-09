@@ -4,6 +4,7 @@
 namespace App\Controllers;
 
 
+use App\Services\Authenticator;
 use Laminas\Diactoros\Response;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -12,10 +13,12 @@ use Laminas\Diactoros\Response\RedirectResponse;
 abstract class BaseController
 {
     protected $twig;
+    protected $authenticator;
 
     public function __construct()
     {
         $this->bootTwig();
+        $this->authenticator = new Authenticator();
     }
 
     private function bootTwig()
@@ -35,8 +38,14 @@ abstract class BaseController
     {
         $response = new Response();
 
+        $isLoggedIn = $this->authenticator->isUserLoggedIn();
+        $authUser = $isLoggedIn ? $this->authenticator->getAuthUser() : null;
+
         $response->getBody()->write(
-            $this->twig->render($view, $data)
+            $this->twig->render(
+                $view,
+                array_merge($data, ['isUserLoggedIn' => $isLoggedIn, 'authUser' => $authUser])
+            )
         );
 
         return $response;
