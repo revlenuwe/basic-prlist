@@ -1,6 +1,9 @@
 <template>
   <div class="card">
     <div class="card-body">
+      <div class="mb-3">
+        <a href="/" class="btn btn-secondary btn-sm">Back to products list</a>
+      </div>
       <form @submit.prevent="editProduct">
         <div class="form-group">
           <label for="name">Name</label>
@@ -69,7 +72,7 @@ export default {
             name: this.name, price: this.price, description: this.description
         }, {headers: {'Content-Type': 'multipart/form-data'}}
         ).then(response => {
-            console.log(response.data)
+            this.$toast.success(response.data.message, {position: 'top-right'})
         })
       }
     }
