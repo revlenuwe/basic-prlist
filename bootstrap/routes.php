@@ -3,6 +3,7 @@
 use App\Controllers\LoginController;
 use App\Controllers\ProductsController;
 use App\Controllers\RegisterController;
+use App\Middlewares\AuthMiddleware;
 use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use League\Route\Router;
@@ -14,7 +15,9 @@ $request = ServerRequestFactory::fromGlobals(
 $router = new Router();
 
 $router->group('api', function ($router) {
-    $router->post('/product/{id:number}/edit', [new \App\Controllers\Api\ProductsController(), 'edit']);
+    $router->post('/product/{id:number}/edit', [new \App\Controllers\Api\ProductsController(), 'edit'])->middleware(new AuthMiddleware());
+    $router->post('/product/add', [new \App\Controllers\Api\ProductsController(), 'add'])->middleware(new AuthMiddleware());
+
     $router->post('/auth/register', new \App\Controllers\Api\Auth\RegisterController());
     $router->post('/auth/login', new \App\Controllers\Api\Auth\LoginController());
 });
@@ -26,10 +29,11 @@ $router->group('auth', function ($router) {
 
 $router->group('product', function ($router) {
     $router->get('/{id:number}/edit', [new ProductsController(), 'edit']);
+    $router->get('/add', [new ProductsController(), 'add']);
     $router->get('/{id:number}', [new ProductsController(), 'product']);
-});
+})->middleware(new AuthMiddleware());
 
-$router->map('GET', '/', [new ProductsController(), 'index']);
+$router->map('GET', '/', [new ProductsController(), 'index'])->middleware(new AuthMiddleware());
 
 
 $response = $router->dispatch($request);
