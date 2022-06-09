@@ -57,8 +57,10 @@ export default {
 
       if(isValid) {
         axios.post('/api/auth/register', this.$data, {headers: {'Content-Type': 'multipart/form-data'}}).then(response => {
-          this.$toast.success('Registration succeeded.Redirecting...', {position: 'top-right'})
-          setTimeout(() => {location.href = '/'}, 3000)
+          if(response.data.registered) {
+            this.$toast.success('Registration succeeded.Redirecting...', {position: 'top-right'})
+            setTimeout(() => {location.href = '/'}, 3000)
+          }
         }).catch(errors => {
           this.errors = errors.response.data
         })
