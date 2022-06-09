@@ -17,4 +17,9 @@ class ProductManager
     {
         return Product::find($id);
     }
+
+    public function create(array $data)
+    {
+        return Product::create($data);
+    }
 }
