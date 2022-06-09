@@ -40,6 +40,21 @@ class Authenticator
         return true;
     }
 
+    public function login($credentials)
+    {
+        $user = $this->userManager->getByUsername($credentials['username']);
+
+        if(!$user) {
+            return false;
+        }
+
+        if(!password_verify($credentials['password'], $user->password)) {
+            return false;
+        }
+
+        return $this->authorize($user);
+    }
+
     public function register($credentials)
     {
         $user = $this->userManager->getByUsername($credentials['username']);
