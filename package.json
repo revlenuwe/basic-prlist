@@ -20,6 +20,8 @@
   "homepage": "https://github.com/revlenuwe/basic-prlist#readme",
   "dependencies": {
     "@babel/core": "^7.18.2",
+    "@vuelidate/core": "^2.0.0-alpha.41",
+    "@vuelidate/validators": "^2.0.0-alpha.29",
     "axios": "^0.27.2",
     "babel-loader": "^8.2.5",
     "core-js": "^3.22.8",
