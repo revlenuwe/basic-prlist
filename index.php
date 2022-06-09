@@ -37,6 +37,8 @@ $request = ServerRequestFactory::fromGlobals(
 
 $router = new Router();
 
+$router->map('POST', '/api/product/{id:number}/edit', [new \App\Controllers\Api\ProductsController(), 'edit']);
+
 $router->map('GET', '/product/{id:number}/edit', [new ProductsController(), 'edit']);
 $router->map('GET', '/product/{id:number}', [new ProductsController(), 'product']);
 $router->map('GET', '/', [new ProductsController(), 'index']);
