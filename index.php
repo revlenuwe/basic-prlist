@@ -1,7 +1,9 @@
 <?php
+session_start();
 
 use App\Controllers\ProductsController;
 use App\Controllers\RegisterController;
+use App\Middlewares\AuthMiddleware;
 use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Events\Dispatcher;
@@ -39,6 +41,7 @@ $request = ServerRequestFactory::fromGlobals(
 $router = new Router();
 
 $router->map('POST', '/api/product/{id:number}/edit', [new \App\Controllers\Api\ProductsController(), 'edit']);
+$router->map('POST', '/api/auth/register', new \App\Controllers\Api\Auth\RegisterController());
 
 $router->map('GET', '/auth/register', [new RegisterController(), 'index']);
 
