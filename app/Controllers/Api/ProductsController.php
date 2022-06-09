@@ -28,6 +28,6 @@ class ProductsController extends BaseApiController
 
         $product->update($request->getParsedBody());
 
-        return $this->response(['ok']);
+        return $this->response(['message' => 'Changes successfully saved']);
     }
 }
