@@ -23,6 +23,23 @@ class Authenticator
         return true;
     }
 
+    public function isUserLoggedIn()
+    {
+        if(!$_SESSION['auth_user']){
+            return false;
+        }
+
+        $user = $this->userManager->getById($_SESSION['auth_user']);
+
+        if(!$user) {
+            unset($_SESSION['auth_user']);
+
+            return false;
+        }
+
+        return true;
+    }
+
     public function register($credentials)
     {
         $user = $this->userManager->getByUsername($credentials['username']);
