@@ -15,7 +15,7 @@ class UserManager
 
     public function getByUsername(string $username)
     {
-        return User::where('username', $username)->get();
+        return User::where('username', $username)->first();
     }
 
     public function create(array $data)
