@@ -20,11 +20,13 @@ $router->group('api', function ($router) {
 
     $router->post('/auth/register', new \App\Controllers\Api\Auth\RegisterController());
     $router->post('/auth/login', new \App\Controllers\Api\Auth\LoginController());
+    $router->post('/auth/logout', new \App\Controllers\Api\Auth\LoginController())->middleware(new AuthMiddleware());
 });
 
 $router->group('auth', function ($router) {
     $router->map('GET', '/register', [new RegisterController(), 'index']);
-    $router->map('GET', '/login', [new LoginController(), 'index']);
+    $router->map('GET', '/login', [new LoginController(), 'login']);
+    $router->map('GET', '/logout', [new LoginController(), 'logout']);
 });
 
 $router->group('product', function ($router) {
