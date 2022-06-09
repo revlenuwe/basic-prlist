@@ -49,7 +49,7 @@ class ProductsController extends BaseController
         }
 
         return $this->renderView('edit.twig', [
-
+            'product' => $product
         ]);
     }
 }
