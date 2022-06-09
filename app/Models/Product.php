@@ -10,5 +10,7 @@ class Product extends Model
 {
     public $table = 'products';
 
+    public $timestamps = false;
+
     protected $fillable = ['name', 'description', 'price', 'image'];
 }
