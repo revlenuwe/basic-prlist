@@ -40,6 +40,11 @@ class ProductsController extends BaseController
         ]);
     }
 
+    public function add(ServerRequestInterface $request)
+    {
+        return $this->renderView('add.twig', []);
+    }
+
     public function edit(ServerRequestInterface $request, array $args)
     {
         $product = $this->productManager->getById($args['id']);

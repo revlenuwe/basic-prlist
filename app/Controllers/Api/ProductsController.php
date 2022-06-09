@@ -16,6 +16,13 @@ class ProductsController extends BaseApiController
         $this->productManager = new ProductManager();
     }
 
+    public function add(ServerRequestInterface $request)
+    {
+        $product = $this->productManager->create($request->getParsedBody());
+
+        return $this->response(['message' => 'Product successfully added.Redirecting...', 'productId' => $product->id]);
+    }
+
     public function edit(ServerRequestInterface $request, array $args)
     {
         $product = $this->productManager->getById($args['id']);
