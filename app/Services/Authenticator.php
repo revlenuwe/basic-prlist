@@ -32,13 +32,27 @@ class Authenticator
         $user = $this->userManager->getById($_SESSION['auth_user']);
 
         if(!$user) {
-            unset($_SESSION['auth_user']);
+            $this->logout();
 
             return false;
         }
 
         return true;
     }
+
+    public function getAuthUser()
+    {
+        $user = $this->userManager->getById($_SESSION['auth_user']);
+
+        if(!$user) {
+            $this->logout();
+
+            return null;
+        }
+
+        return $user;
+    }
+
 
     public function login($credentials)
     {
@@ -53,6 +67,13 @@ class Authenticator
         }
 
         return $this->authorize($user);
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['auth_user']);
+
+        return true;
     }
 
     public function register($credentials)
