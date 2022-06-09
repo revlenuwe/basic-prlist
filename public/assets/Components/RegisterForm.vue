@@ -3,6 +3,11 @@
     <div class="card-body">
       <h4>Registration</h4>
       <form @submit.prevent="register">
+        <div class="alert alert-danger" role="alert" v-if="errors">
+          <ul class="m-0">
+            <li v-for="error of errors">{{ error }}</li>
+          </ul>
+        </div>
         <div class="form-group">
           <label for="name">Username</label>
           <input type="text" class="form-control" id="name" v-model="username">
@@ -42,12 +47,22 @@ export default {
     return {
       username: null,
       password: null,
-      password_confirmation: null
+      password_confirmation: null,
+      errors: null
     }
   },
   methods: {
     register() {
       const isValid = this.v$.$validate();
+
+      if(isValid) {
+        axios.post('/api/auth/register', this.$data, {headers: {'Content-Type': 'multipart/form-data'}}).then(response => {
+          this.$toast.success('Registration succeeded.Redirecting...', {position: 'top-right'})
+          setTimeout(() => {location.href = '/'}, 3000)
+        }).catch(errors => {
+          this.errors = errors.response.data
+        })
+      }
     }
   },
   validations() {
