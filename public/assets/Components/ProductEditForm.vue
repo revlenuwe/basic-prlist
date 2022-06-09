@@ -17,7 +17,9 @@
           <textarea name="description" class="form-control" id="description" cols="30" rows="10" v-model="description"></textarea>
           <div class="pt-1 text-danger" v-if="v$.description.$error.required">Field description is required</div>
         </div>
-        <button type="submit" class="btn btn-success">Save</button>
+        <div class="pt-3">
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
       </form>
     </div>
   </div>
@@ -63,7 +65,12 @@ export default {
       const isValid = this.v$.$validate();
 
       if(isValid) {
-
+        axios.post('/api/product/' + this.id + '/edit', {
+            name: this.name, price: this.price, description: this.description
+        }, {headers: {'Content-Type': 'multipart/form-data'}}
+        ).then(response => {
+            console.log(response.data)
+        })
       }
     }
   },
