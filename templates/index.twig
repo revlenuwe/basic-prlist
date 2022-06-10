@@ -5,22 +5,8 @@
 {% block content %}
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="pb-4">Product list</h3>
+            <h3 class="pb-4">Products list</h3>
         </div>
-        {% for product in products %}
-        <div class="col-lg-3 pb-2">
-            <div class="card">
-                {% if product.image|default %}
-                    <img src="{{ product.image }}" class="card-img-top" alt="4ws">
-                {% else %}
-                    <img src="/public/images/placeholder.png" class="card-img-top" alt="placeholder">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <a href="/product/{{ product.id }}" class="btn btn-success mt-2 w-100">Go to</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+        <products-list />
     </div>
 {% endblock %}
