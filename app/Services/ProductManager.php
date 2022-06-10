@@ -13,6 +13,11 @@ class ProductManager
         return Product::orderBy($field, $orderBy)->get();
     }
 
+    public function getSerializedProducts(string $searchBy, string $searchText = null)
+    {
+        return Product::where($searchBy,'like', '%'.$searchText.'%')->get()->toArray();
+    }
+
     public function getById(int $id)
     {
         return Product::find($id);
