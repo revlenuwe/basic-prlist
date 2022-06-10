@@ -19,6 +19,9 @@
           <p class="text-danger" v-for="error of v$.password.$errors">{{ error.$message }}</p>
         </div>
         <div class="pt-3">
+          <p>
+            Dont have an account? <a href="/auth/register">Registration</a>
+          </p>
           <button type="submit" class="btn btn-primary w-100">Login</button>
         </div>
       </form>

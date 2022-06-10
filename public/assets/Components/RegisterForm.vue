@@ -24,6 +24,9 @@
           <p class="text-danger" v-for="error of v$.password_confirmation.$errors">{{ error.$message }}</p>
         </div>
         <div class="pt-3">
+          <p class="text-right">
+            Have an account? <a href="/auth/login">Login</a>
+          </p>
           <button type="submit" class="btn btn-primary w-100">Register</button>
         </div>
       </form>
