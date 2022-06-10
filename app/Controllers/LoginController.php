@@ -8,7 +8,7 @@ class LoginController extends BaseController
 {
     public function login()
     {
-        return $this->renderView('auth/login.twig', []);
+        return $this->renderView('auth/login.twig');
     }
 
     public function logout()

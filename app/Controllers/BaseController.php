@@ -34,7 +34,7 @@ abstract class BaseController
         return __DIR__ . '/../..//' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
 
-    public function renderView(string $view, array $data)
+    public function renderView(string $view, array $data = [])
     {
         $response = new Response();
 

@@ -20,7 +20,7 @@ class ProductsController extends BaseController
 
     public function index(ServerRequestInterface $request)
     {
-        return $this->renderView('index.twig', []);
+        return $this->renderView('index.twig');
     }
 
     public function product(ServerRequestInterface $request, array $args)
@@ -38,7 +38,7 @@ class ProductsController extends BaseController
 
     public function add(ServerRequestInterface $request)
     {
-        return $this->renderView('add.twig', []);
+        return $this->renderView('add.twig');
     }
 
     public function edit(ServerRequestInterface $request, array $args)

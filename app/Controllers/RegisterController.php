@@ -8,6 +8,6 @@ class RegisterController extends BaseController
 {
     public function index()
     {
-        return $this->renderView('auth/register.twig', []);
+        return $this->renderView('auth/register.twig');
     }
 }
