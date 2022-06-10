@@ -20,11 +20,7 @@ class ProductsController extends BaseController
 
     public function index(ServerRequestInterface $request)
     {
-        $products = $this->productManager->getAll();
-
-        return $this->renderView('index.twig', [
-            'products' => $products
-        ]);
+        return $this->renderView('index.twig', []);
     }
 
     public function product(ServerRequestInterface $request, array $args)

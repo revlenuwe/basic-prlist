@@ -17,6 +17,7 @@ $router = new Router();
 $router->group('api', function ($router) {
     $router->post('/product/{id:number}/edit', [new \App\Controllers\Api\ProductsController(), 'edit'])->middleware(new AuthMiddleware());
     $router->post('/product/add', [new \App\Controllers\Api\ProductsController(), 'add'])->middleware(new AuthMiddleware());
+    $router->get('/products', [new \App\Controllers\Api\ProductsController(), 'products'])->middleware(new AuthMiddleware());
 
     $router->post('/auth/register', new \App\Controllers\Api\Auth\RegisterController());
     $router->post('/auth/login', new \App\Controllers\Api\Auth\LoginController());

@@ -16,6 +16,13 @@ class ProductsController extends BaseApiController
         $this->productManager = new ProductManager();
     }
 
+    public function products(ServerRequestInterface $request)
+    {
+        $products = $this->productManager->getSerializedProducts('name', $request->getQueryParams()['name']);
+
+        return $this->response($products);
+    }
+
     public function add(ServerRequestInterface $request)
     {
         $product = $this->productManager->create($request->getParsedBody());
