@@ -9,7 +9,7 @@
           <img v-else src="/public/images/placeholder.png" class="card-img-top" alt="placeholder">
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
-            <a :href="'/product/' + product.id + '/edit'" class="btn btn-success mt-2 w-100">Go to</a>
+            <a :href="'/product/' + product.id" class="btn btn-success mt-2 w-100">Go to</a>
           </div>
         </div>
       </div>
